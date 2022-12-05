@@ -73,8 +73,6 @@ public class FacilityManagementView {
                     for (Map.Entry<Facility, Integer> entry : facilityServiceController.addFacility().entrySet()) {
                         if (entry.getValue() > 5) {
                             System.out.println(" service " + entry.getKey() + " times " + entry.getValue());
-                        } else {
-                            System.out.println(" not facility management now");
                         }
                     }
                     break;
