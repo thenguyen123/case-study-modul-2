@@ -1,13 +1,23 @@
 package model;
 
+import java.util.Objects;
+
 public class Villa extends Facility {
 
     private  String roomStandard;
     private  int areaPool;
     private int floor;
-    public Villa(String name, int area, String prices, int people, String rentType) {
+    public Villa(String name, int area,double prices, int people, String rentType) {
         super(name, area, prices, people, rentType);
 
+    }
+
+    public Villa(String name, int area,double prices, int people, String rentType,
+                 String roomStandard, int areaPool, int floor) {
+        super(name, area, prices, people, rentType);
+        this.roomStandard = roomStandard;
+        this.areaPool = areaPool;
+        this.floor = floor;
     }
 
     public String getRoomStandard() {
@@ -41,5 +51,19 @@ public class Villa extends Facility {
                 ", areaPool=" + areaPool +
                 ", floor=" + floor +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Villa villa = (Villa) o;
+        return areaPool == villa.areaPool && floor == villa.floor && Objects.equals(roomStandard, villa.roomStandard);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), roomStandard, areaPool, floor);
     }
 }

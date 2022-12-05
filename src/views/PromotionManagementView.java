@@ -2,7 +2,7 @@ package views;
 
 import java.util.Scanner;
 
-public class PromotionManagementController {
+public class PromotionManagementView {
     public void promotionManagement(){
 
     int input;
@@ -19,7 +19,7 @@ public class PromotionManagementController {
             case 2:
                 break;
             case 3:
-                FuramaController.disPlayMainMenu();
+                FuramaView.disPlayMainMenu();
                 break;
         }
     }while (input!=3);

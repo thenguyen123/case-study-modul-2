@@ -1,10 +1,8 @@
 package views;
 
-import views.*;
-
 import java.util.Scanner;
 
-public class FuramaController {
+public class FuramaView {
     public static void disPlayMainMenu() {
         Scanner scanner = new Scanner(System.in);
         int numberInput;
@@ -20,23 +18,23 @@ public class FuramaController {
             numberInput = Integer.parseInt(scanner.nextLine());
             switch (numberInput) {
                 case 1:
-                    EmployeeManagementController employeeManagementController = new EmployeeManagementController();
+                    EmployeeManagementView employeeManagementController = new EmployeeManagementView();
                     employeeManagementController.employeeManagement();
                     break;
                 case 2:
-                    CustomerManagementController customerManagementController = new CustomerManagementController();
+                    CustomerManagementView customerManagementController = new CustomerManagementView();
                     customerManagementController.customerManagement();
                     break;
                 case 3:
-                    FacilityManagementController facilityManagementController = new FacilityManagementController();
+                    FacilityManagementView facilityManagementController = new FacilityManagementView();
                     facilityManagementController.facilityManagement();
                     break;
                 case 4:
-                    BookingManagementController bookingManagementController = new BookingManagementController();
+                    BookingManagementView bookingManagementController = new BookingManagementView();
                     bookingManagementController.bookingManagement();
                     break;
                 case 5:
-                    PromotionManagementController promotionManagementController = new PromotionManagementController();
+                    PromotionManagementView promotionManagementController = new PromotionManagementView();
                     promotionManagementController.promotionManagement();
                     break;
             }

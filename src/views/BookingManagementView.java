@@ -2,7 +2,7 @@ package views;
 
 import java.util.Scanner;
 
-public class BookingManagementController {
+public class BookingManagementView {
     public  void bookingManagement(){
         int input;
 do{
@@ -19,7 +19,7 @@ do{
         case 2:
             break;
         case 3:
-            FuramaController.disPlayMainMenu();
+            FuramaView.disPlayMainMenu();
             break;
     }
 }while (input!=3);

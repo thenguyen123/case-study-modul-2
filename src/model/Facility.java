@@ -1,10 +1,12 @@
 package model;
 
+import java.util.Objects;
+
 public abstract class Facility {
 
     private String name;
     private int area;
-    private  String prices;
+    private  double prices;
     private int people;
     private String rentType;
 
@@ -12,8 +14,12 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String name, int area, String prices, int people, String rentType) {
-
+    public Facility(String name, int area, double prices, int people, String rentType) {
+this.name=name;
+this.area=area;
+this.prices=prices;
+this.people=people;
+this.rentType=rentType;
     }
 
     public String getName() {
@@ -32,11 +38,11 @@ public abstract class Facility {
         this.area = area;
     }
 
-    public String getPrices() {
+    public double getPrices() {
         return prices;
     }
 
-    public void setPrices(String prices) {
+    public void setPrices(double prices) {
         this.prices = prices;
     }
 
@@ -64,5 +70,19 @@ public abstract class Facility {
                 ", people=" + people +
                 ", rentType='" + rentType + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Facility facility = (Facility) o;
+        return area == facility.area && Double.compare(facility.prices, prices) == 0 && people == facility.people
+                && Objects.equals(name, facility.name) && Objects.equals(rentType, facility.rentType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, area, prices, people, rentType);
     }
 }

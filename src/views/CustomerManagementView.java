@@ -6,7 +6,7 @@ import services.impl.CustomerServiceImpl;
 import java.util.List;
 import java.util.Scanner;
 
-public class CustomerManagementController {
+public class CustomerManagementView {
 
 
     public  void customerManagement() {
@@ -64,7 +64,7 @@ public class CustomerManagementController {
                 customerService.editCustomer(customer1);
                 break;
             case 4:
-                FuramaController.disPlayMainMenu();
+                FuramaView.disPlayMainMenu();
                 break;
         }
         }while (input!=4);

@@ -44,11 +44,11 @@ public class EmployeeServiceImpl implements IEmployee {
 
     @Override
     public void deleteEmployee(String idEmployee) {
-        for (Employee e: list) {
+        for (int i = 0; i < list.size(); i++) {
+            Employee e=list.get(i);
             if(idEmployee.equals(e.getId())){
                 list.remove(e);
-
-            }
+        }
         }
     }
 }

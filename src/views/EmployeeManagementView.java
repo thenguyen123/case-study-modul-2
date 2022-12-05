@@ -6,7 +6,7 @@ import services.impl.EmployeeServiceImpl;
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeManagementController {
+public class EmployeeManagementView {
     public void employeeManagement() {
         EmployeeServiceImpl employeeService=new EmployeeServiceImpl();
         Scanner scanner=new Scanner(System.in);
@@ -74,7 +74,7 @@ do{
                 employeeService.editEmployee(employee1);
                 break;
             case 5:
-                FuramaController.disPlayMainMenu();
+                FuramaView.disPlayMainMenu();
                 break;
 
         }
