@@ -4,16 +4,20 @@ public abstract class Person {
 
     private String id;
     private  String name;
+    private String dayOfBirth;
     private  String Sex;
     private  String CMND;
     private String email;
     private String type;
     private String address;
 
-    public Person(String id, String name, String sex, String CMND, String email, String type, String address) {
+
+    public Person(String id, String name,String dayOfBirth, String sex, String CMND, String email, String type,
+                  String address) {
+        this.dayOfBirth=dayOfBirth;
         this.id = id;
         this.name = name;
-        Sex = sex;
+        this.Sex = sex;
         this.CMND = CMND;
         this.email = email;
         this.type = type;
@@ -21,6 +25,14 @@ public abstract class Person {
     }
 
     public Person() {
+    }
+
+    public String getDayOfBirth() {
+        return dayOfBirth;
+    }
+
+    public void setDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
     }
 
     public String getId() {
@@ -81,8 +93,10 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "id='" + id + '\'' +
+        return "Person{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", dayOfBirth='" + dayOfBirth + '\'' +
                 ", Sex='" + Sex + '\'' +
                 ", CMND='" + CMND + '\'' +
                 ", email='" + email + '\'' +

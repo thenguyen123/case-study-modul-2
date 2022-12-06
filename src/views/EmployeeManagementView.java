@@ -1,6 +1,7 @@
 package views;
 
 import model.Employee;
+import services.exception.RegexDayOfBirth;
 import services.impl.EmployeeServiceImpl;
 
 import java.util.List;
@@ -43,7 +44,18 @@ do{
                 String addressEmployee = scanner.nextLine();
                 System.out.println("enter salary of Employee");
                 long salaryEmployee =Long.parseLong(scanner.nextLine());
-                Employee employee = new Employee(idEmployee, nameEmployee, sexEmployee, cmndEmployee, email,
+                String dayOfBirth;
+                do{
+                    try {
+                        System.out.println("enter day of birth of Employee");
+                        dayOfBirth = scanner.nextLine();
+                        RegexDayOfBirth.dayOfBirth(dayOfBirth);
+                        break;
+                    }catch ( Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }while (true);
+                Employee employee = new Employee(idEmployee, nameEmployee, dayOfBirth, sexEmployee, cmndEmployee, email,
                         typeEmployee, addressEmployee, salaryEmployee);
                 employeeService.addEmployee(employee);
                 break;
@@ -69,7 +81,19 @@ do{
                 String addressEmployee1 = scanner.nextLine();
                 System.out.println("enter salary of Employee");
                 long salaryEmployee1 = Long.parseLong (scanner.nextLine());
-                Employee employee1 = new Employee(idEmployee2, nameEmployee1, sexEmployee1, cmndEmployee1, email1,
+                String dayOfBirth1;
+                do{
+                    try {
+                        System.out.println("enter day of birth of Employee");
+                        dayOfBirth1 = scanner.nextLine();
+                        RegexDayOfBirth.dayOfBirth(dayOfBirth1);
+                        break;
+                    }catch ( Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }while (true);
+
+                Employee employee1 = new Employee(idEmployee2, nameEmployee1,dayOfBirth1, sexEmployee1, cmndEmployee1, email1,
                         typeEmployee1, addressEmployee1, salaryEmployee1);
                 employeeService.editEmployee(employee1);
                 break;
@@ -79,9 +103,8 @@ do{
 
         }
     }while (input!=5);
-    }   public static void main(String[] args) {
 
-    }
+}
 }
 
 

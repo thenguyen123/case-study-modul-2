@@ -1,6 +1,7 @@
 package views;
 
 import model.Customer;
+import services.exception.RegexDayOfBirth;
 import services.impl.CustomerServiceImpl;
 
 import java.util.List;
@@ -26,40 +27,64 @@ public class CustomerManagementView {
                 System.out.println(list);
                 break;
             case 2:
-                System.out.println("enter id of Employee ");
+                System.out.println("enter id of Customer ");
                 String idCustomer= scanner.nextLine();
-                System.out.println(" enter name of Employee");
+                System.out.println(" enter name of Customer");
                 String nameCustomer = scanner.nextLine();
-                System.out.println("enter sex of Employee");
+                System.out.println("enter sex of Customer");
                 String sexCustomer = scanner.nextLine();
-                System.out.println("enter CMND of Employee");
+                System.out.println("enter CMND of Customer");
                 String cmndCustomer = scanner.nextLine();
-                System.out.println("enter email of Employee");
+                System.out.println("enter email of Customer");
                 String emailCustomer = scanner.nextLine();
-                System.out.println("enter type of Employee");
+                System.out.println("enter type of Customer");
                 String typeCustomer = scanner.nextLine();
-                System.out.println("enter address of Employee");
+                System.out.println("enter address of Customer");
                 String addressCustomer = scanner.nextLine();
-               Customer customer=new Customer(idCustomer,nameCustomer,sexCustomer,
+
+
+                String dayOfBirth;
+                do{
+                    try { System.out.println("enter day of birth of Customer");
+
+                        dayOfBirth= scanner.nextLine();
+                        RegexDayOfBirth.dayOfBirth(dayOfBirth);
+                        break;
+                    }catch ( Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }while (true);
+               Customer customer=new Customer(idCustomer,nameCustomer,dayOfBirth, sexCustomer,
                        cmndCustomer,emailCustomer,typeCustomer,addressCustomer);
                customerService.add(customer);
                 break;
             case 3:
-                System.out.println("enter id of Employee ");
+                System.out.println("enter id of Customer ");
                 String idCustomer1= scanner.nextLine();
-                System.out.println(" enter name of Employee");
+                System.out.println(" enter name of Customer");
                 String nameCustomer1 = scanner.nextLine();
-                System.out.println("enter sex of Employee");
+                System.out.println("enter sex of Customer");
                 String sexCustomer1 = scanner.nextLine();
-                System.out.println("enter CMND of Employee");
+                System.out.println("enter CMND of Customer");
                 String cmndCustomer1 = scanner.nextLine();
-                System.out.println("enter email of Employee");
+                System.out.println("enter email of Customer");
                 String emailCustomer1 = scanner.nextLine();
-                System.out.println("enter type of Employee");
+                System.out.println("enter type of Customer");
                 String typeCustomer1 = scanner.nextLine();
-                System.out.println("enter address of Employee");
+                System.out.println("enter address of Customer");
                 String addressCustomer1 = scanner.nextLine();
-                Customer customer1=new Customer(idCustomer1,nameCustomer1,sexCustomer1,
+                String dayOfBirth1;
+                do{
+                    try { System.out.println("enter day of birth of Customer");
+
+                        dayOfBirth1 = scanner.nextLine();
+                        RegexDayOfBirth.dayOfBirth(dayOfBirth1);
+                        break;
+                    }catch ( Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }while (true);
+                Customer customer1=new Customer(idCustomer1,nameCustomer1,dayOfBirth1, sexCustomer1,
                         cmndCustomer1,emailCustomer1,typeCustomer1,addressCustomer1);
                 customerService.editCustomer(customer1);
                 break;

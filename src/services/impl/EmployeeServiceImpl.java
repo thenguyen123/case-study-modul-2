@@ -1,29 +1,32 @@
 package services.impl;
 
 import model.Employee;
+import utils.Read.ReadFileEmployee;
+import utils.Write.WriteFileEmployee;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class EmployeeServiceImpl implements IEmployee {
-    List<Employee> list = new ArrayList<>();
 
+public static final String EMPLOYEE="D:\\codegym\\case_study\\src\\data\\employee.csv ";
     @Override
     public List<Employee> disPlay() {
-        return list;
+        return ReadFileEmployee.readFile(EMPLOYEE);
     }
 
     //    String id, String name, String sex, String CMND,
 //    String email, String type, String address, double salary) {
     @Override
     public void addEmployee(Employee employee) {
-
+        List<Employee> list=new ArrayList<>();
         list.add(employee);
+        WriteFileEmployee.writeFile(EMPLOYEE,list);
     }
 
     @Override
     public void editEmployee(Employee employee) {
+        List<Employee> list=ReadFileEmployee.readFile(EMPLOYEE);
         for (int i = 0; i < list.size(); i++) {
              Employee e=list.get(i);
             if (employee.getId().equals(e.getId())) {
@@ -36,7 +39,7 @@ public class EmployeeServiceImpl implements IEmployee {
                 e.setSalary(employee.getSalary());
                 break;
             }
-        }
+        }WriteFileEmployee.writeFile(EMPLOYEE,list);
 
 
         }
@@ -44,11 +47,12 @@ public class EmployeeServiceImpl implements IEmployee {
 
     @Override
     public void deleteEmployee(String idEmployee) {
+        List<Employee> list=ReadFileEmployee.readFile(EMPLOYEE);
         for (int i = 0; i < list.size(); i++) {
             Employee e=list.get(i);
             if(idEmployee.equals(e.getId())){
                 list.remove(e);
         }
-        }
+        }WriteFileEmployee.writeFile(EMPLOYEE,list);
     }
 }

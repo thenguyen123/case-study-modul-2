@@ -55,7 +55,8 @@ public class FacilityManagementView {
                             case 2:
                                 villaView.addVilla();
                                 boolean flagvilla = true;
-                                for (Map.Entry<Facility, Integer> entry : facilityServiceController.addFacility().entrySet()) {
+                                for (Map.Entry<Facility, Integer> entry :
+                                        facilityServiceController.addFacility().entrySet()) {
                                     if (villaView.villa().equals(entry.getKey())) {
                                         flagvilla = false;
                                     }

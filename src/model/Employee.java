@@ -3,11 +3,13 @@ package model;
 public class Employee extends Person {
     private long salary;
 
-    public Employee(String id, String name, String sex, String CMND,
-                    String email, String type, String address,long salary) {
-        super(id, name, sex, CMND, email, type, address);
+    public Employee(String id, String name, String dayOfBirth, String sex, String CMND, String email,
+                    String type, String address, long salary) {
+        super(id, name, dayOfBirth, sex, CMND, email, type, address);
         this.salary = salary;
     }
+
+
 
     public Employee() {
     }
@@ -30,5 +32,8 @@ public class Employee extends Person {
                 super.toString()+
                 "salary=" + salary +
                 '}';
+    }public String csv(){
+        return super.getId()+","+super.getName()+","+super.getDayOfBirth()+","+super.getSex()+","+super.getCMND()+","+
+                super.getEmail()+","+super.getType()+","+super.getAddress()+","+this.salary;
     }
 }

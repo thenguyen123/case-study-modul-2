@@ -10,6 +10,7 @@ public class Villa extends Facility {
     public Villa(String name, int area,double prices, int people, String rentType) {
         super(name, area, prices, people, rentType);
 
+
     }
 
     public Villa(String name, int area,double prices, int people, String rentType,
@@ -51,6 +52,9 @@ public class Villa extends Facility {
                 ", areaPool=" + areaPool +
                 ", floor=" + floor +
                 '}';
+    }public String csv(){
+        return super.getName()+","+super.getArea()+","+super.getPrices()+","+super.getPeople()+","+super.getRentType()+","+
+                this.roomStandard+","+this.areaPool+","+this.floor;
     }
 
     @Override
@@ -65,5 +69,6 @@ public class Villa extends Facility {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), roomStandard, areaPool, floor);
+
     }
 }

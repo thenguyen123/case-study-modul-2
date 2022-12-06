@@ -27,6 +27,9 @@ public class Room extends Facility {
         return "Room{" +super.toString()+
                 "serviceFree='" + serviceFree + '\'' +
                 '}';
+    }public String csv(){
+        return super.getName()+","+super.getArea()+","+super.getPrices()+","+super.getPeople()+","+
+                super.getRentType()+","+this.serviceFree;
     }
 
     @Override

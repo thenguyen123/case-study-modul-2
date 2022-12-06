@@ -20,7 +20,7 @@ public class FacilityServiceImpl implements IFacilityService {
     }
     @Override
     public List<Facility> disPlay() {
-        return list;
+        return null;
     }
 
 }
