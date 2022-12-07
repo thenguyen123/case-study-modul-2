@@ -25,7 +25,7 @@ public static final String FILEROOM="src/data/room.csv";
             regexID.regexId(nameRoom);
             break;
             }catch (Exception e){
-             System.out.println(e.getMessage());
+             System.err.println(e.getMessage());
         }
         }while (true);
 
@@ -36,7 +36,7 @@ public static final String FILEROOM="src/data/room.csv";
                 ExceptionArea.area(areaRoom);
                 break;
             } catch (Exception |NumberFormatException  e) {
-                System.out.println(e.getMessage());
+                System.err.println(e.getMessage());
             }
         }while (true);
        do {
@@ -46,7 +46,7 @@ public static final String FILEROOM="src/data/room.csv";
                ExceptionPrices.prices(pricesRoom);
                break;
            }catch (Exception |NumberFormatException  e){
-               System.out.println(e.getMessage());
+               System.err.println(e.getMessage());
            }
        }while (true);
         do {
@@ -56,7 +56,7 @@ public static final String FILEROOM="src/data/room.csv";
                 ExceptionPeople.people(peopleRoom);
                 break;
             }catch (Exception |NumberFormatException e){
-                System.out.println(e.getMessage());
+                System.err.println(e.getMessage());
             }
         }while (true);
 

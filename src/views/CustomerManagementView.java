@@ -1,7 +1,9 @@
 package views;
 
+import controllers.RegexController;
 import model.Customer;
 import services.exception.ExceptionAndRegexDayOfBirth;
+import services.exception.Regex;
 import services.impl.CustomerServiceImpl;
 
 import java.util.List;
@@ -12,7 +14,7 @@ public class CustomerManagementView {
 
     public  void customerManagement() {
         CustomerServiceImpl customerService=new CustomerServiceImpl();
-        int input;
+        int input=0;
         do{
         System.out.println("1. Display list customers");
         System.out.println("2. Add new customers");
@@ -20,7 +22,12 @@ public class CustomerManagementView {
         System.out.println("4. Return main menu");
         Scanner scanner=new Scanner(System.in);
         System.out.println("enter your choose");
-       input =Integer.parseInt(scanner.nextLine());
+            try {
+                input = Integer.parseInt(scanner.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println(e.getMessage());
+
+            }
         switch (input) {
             case 1:
               List<Customer>list= customerService.disPlay();
@@ -32,13 +39,13 @@ public class CustomerManagementView {
                 System.out.println("enter id of Customer ");
                 String idCustomer= scanner.nextLine();
                 System.out.println(" enter name of Customer");
-                String nameCustomer = scanner.nextLine();
+                String nameCustomer =RegexController.result(Regex.Name);
                 System.out.println("enter sex of Customer");
                 String sexCustomer = scanner.nextLine();
                 System.out.println("enter CMND of Customer");
                 String cmndCustomer = scanner.nextLine();
                 System.out.println("enter email of Customer");
-                String emailCustomer = scanner.nextLine();
+                String emailCustomer = RegexController.result(Regex.Email);
                 System.out.println("enter type of Customer");
                 String typeCustomer = scanner.nextLine();
                 System.out.println("enter address of Customer");
@@ -64,13 +71,13 @@ public class CustomerManagementView {
                 System.out.println("enter id of Customer ");
                 String idCustomer1= scanner.nextLine();
                 System.out.println(" enter name of Customer");
-                String nameCustomer1 = scanner.nextLine();
+                String nameCustomer1 = RegexController.result(Regex.Name);
                 System.out.println("enter sex of Customer");
                 String sexCustomer1 = scanner.nextLine();
                 System.out.println("enter CMND of Customer");
                 String cmndCustomer1 = scanner.nextLine();
                 System.out.println("enter email of Customer");
-                String emailCustomer1 = scanner.nextLine();
+                String emailCustomer1 = RegexController.result(Regex.Email);
                 System.out.println("enter type of Customer");
                 String typeCustomer1 = scanner.nextLine();
                 System.out.println("enter address of Customer");
@@ -93,6 +100,8 @@ public class CustomerManagementView {
             case 4:
                 FuramaView.disPlayMainMenu();
                 break;
+            default:
+                System.out.println("enter again");
         }
         }while (input!=4);
     }

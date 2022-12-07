@@ -86,3 +86,5 @@ this.rentType=rentType;
         return Objects.hash(name, area, prices, people, rentType);
     }
 }
+
+

@@ -1,7 +1,9 @@
 package views;
 
+import controllers.RegexController;
 import model.Employee;
 import services.exception.ExceptionAndRegexDayOfBirth;
+import services.exception.Regex;
 import services.impl.EmployeeServiceImpl;
 
 import java.util.List;
@@ -11,7 +13,7 @@ public class EmployeeManagementView {
     public void employeeManagement() {
         EmployeeServiceImpl employeeService=new EmployeeServiceImpl();
         Scanner scanner=new Scanner(System.in);
-        int input;
+        int input=0;
 do{
         System.out.println("1. Display  list employees");
         System.out.println("2. Add new employee");
@@ -20,7 +22,12 @@ do{
         System.out.println("5.Return main menu");
 
         System.out.println("enter your choose");
-         input=Integer.parseInt(scanner.nextLine());
+    try {
+        input = Integer.parseInt(scanner.nextLine());
+    }catch (NumberFormatException e){
+        System.out.println(e.getMessage());
+
+    }
         switch (input) {
             case 1:
                 List<Employee> list=employeeService.disPlay();
@@ -33,19 +40,19 @@ do{
                 System.out.println("enter id of Employee ");
                 String idEmployee = scanner.nextLine();
                 System.out.println(" enter name of Employee");
-                String nameEmployee = scanner.nextLine();
+                String nameEmployee = RegexController.result(Regex.Name);
                 System.out.println("enter sex of Employee");
                 String sexEmployee = scanner.nextLine();
                 System.out.println("enter CMND of Employee");
                 String cmndEmployee = scanner.nextLine();
                 System.out.println("enter email of Employee");
-                String email = scanner.nextLine();
+                String email = RegexController.result(Regex.Email);
                 System.out.println("enter type of Employee");
                 String typeEmployee = scanner.nextLine();
                 System.out.println("enter address of Employee");
                 String addressEmployee = scanner.nextLine();
                 System.out.println("enter salary of Employee");
-                long salaryEmployee =Long.parseLong(scanner.nextLine());
+                int salaryEmployee = Integer.parseInt(RegexController.result(Regex.People));
                 String dayOfBirth;
                 do{
                     try {
@@ -70,13 +77,13 @@ do{
                 System.out.println("enter id of Employee ");
                 String idEmployee2= scanner.nextLine();
                 System.out.println(" enter name of Employee");
-                String nameEmployee1 = scanner.nextLine();
+                String nameEmployee1 = RegexController.result(Regex.Name);
                 System.out.println("enter sex of Employee");
                 String sexEmployee1 = scanner.nextLine();
                 System.out.println("enter CMND of Employee");
                 String cmndEmployee1 = scanner.nextLine();
                 System.out.println("enter email of Employee");
-                String email1 = scanner.nextLine();
+                String email1 = RegexController.result(Regex.Email);
                 System.out.println("enter type of Employee");
                 String typeEmployee1 = scanner.nextLine();
                 System.out.println("enter address of Employee");

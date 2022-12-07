@@ -4,6 +4,7 @@ import controllers.FacilityServiceController;
 
 import model.Room;
 import model.Villa;
+
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class FacilityManagementView {
     VillaView villaView = new VillaView();
 
     public void facilityManagement() {
-        int input;
+        int input=0;
 
         do {
 
@@ -23,7 +24,12 @@ public class FacilityManagementView {
             System.out.println("4.Return main menu");
             Scanner scanner = new Scanner(System.in);
             System.out.println("enter your choose");
-            input = Integer.parseInt(scanner.nextLine());
+          try {
+              input = Integer.parseInt(scanner.nextLine());
+          }catch (NumberFormatException e){
+              System.out.println(e.getMessage());
+
+          }
             switch (input) {
                 case 1:
 
@@ -37,13 +43,18 @@ public class FacilityManagementView {
                     break;
                 case 2:
 
-                    int option;
+                    int option=0;
                     do {
                         System.out.println("1.Add new Room");
                         System.out.println("2.Add new Villa");
                         System.out.println("3. Back to menu");
                         System.out.println("enter your option");
-                        option = Integer.parseInt(scanner.nextLine());
+                        try {
+                            option = Integer.parseInt(scanner.nextLine());
+                        }catch (NumberFormatException e){
+                            System.out.println(e.getMessage());
+
+                        }
                         switch (option) {
                             case 1:
                                 for (Map.Entry<Room, Integer> entry : facilityServiceController.toStringRoom().entrySet()) {

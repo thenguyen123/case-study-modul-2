@@ -7,7 +7,7 @@ public class FuramaView {
         Scanner scanner = new Scanner(System.in);
         int numberInput = 0;
         do {
-            try {
+
             System.out.println("1.Employee Management");
             System.out.println("2.Customer Management");
             System.out.println("3.Facility Management");
@@ -15,7 +15,7 @@ public class FuramaView {
             System.out.println("5.Promotion Management");
             System.out.println("6.Exit");
             System.out.println("enter your option");
-
+                try {
             numberInput = Integer.parseInt(scanner.nextLine());
              }catch (NumberFormatException e){
                  System.out.println(e.getMessage());
