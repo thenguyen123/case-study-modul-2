@@ -3,18 +3,19 @@ package views;
 import model.Villa;
 import services.exception.*;
 import services.exception.Exception;
+import utils.Write.WriteVillaFile;
 
 import java.util.Scanner;
 
 public class VillaView {
     Villa villa;
-
+public  static final String FILEVILLA="src/data/villa.csv";
     public void addVilla() {
 
         Scanner scanner = new Scanner(System.in);
         String nameVilla = "";
         int areaVilla;
-        double pricesVilla;
+        int pricesVilla;
         int peopleVilla;
         int areaPool;
         int floor;
@@ -24,7 +25,7 @@ public class VillaView {
             try {
                 System.out.println("enter name of villa");
                 nameVilla = scanner.nextLine();
-                RegexName regexID = new RegexName();
+                ExceptionAndRegexName regexID = new ExceptionAndRegexName();
                 regexID.regexId(nameVilla);
                 break;
             } catch (Exception e) {
@@ -44,7 +45,7 @@ public class VillaView {
         do {
             try {
                 System.out.println("enter prices of villa");
-                pricesVilla = Double.parseDouble(scanner.nextLine());
+                pricesVilla = Integer.parseInt (scanner.nextLine());
                 ExceptionPrices.prices(pricesVilla);
                 break;
             } catch (Exception | NumberFormatException e) {
@@ -76,7 +77,7 @@ public class VillaView {
             try {
                 System.out.println("enter rentType of villa");
                 rentTypeVilla = scanner.nextLine();
-                RegexName regexName = new RegexName();
+                ExceptionAndRegexName regexName = new ExceptionAndRegexName();
                 regexName.regexId(rentTypeVilla);
                 break;
             } catch (Exception e) {
@@ -89,7 +90,7 @@ public class VillaView {
             try {
                 System.out.println("enter room of villa");
                 roomStandard = scanner.nextLine();
-                RegexName regexName = new RegexName();
+                ExceptionAndRegexName regexName = new ExceptionAndRegexName();
                 regexName.regexId(roomStandard);
                 break;
             } catch (Exception e) {
@@ -113,7 +114,7 @@ public class VillaView {
 
 
         villa = new Villa(nameVilla, areaVilla, pricesVilla, peopleVilla, rentTypeVilla, roomStandard, areaPool, floor);
-
+        WriteVillaFile.writeFile(FILEVILLA,villa);
     }
 
     public Villa villa() {

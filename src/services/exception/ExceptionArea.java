@@ -1,11 +1,14 @@
 package services.exception;
 
-import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ExceptionArea {
     public static void area(int a) throws Exception {
-        if (a < 30) {
-            throw new Exception("area have to more than 30 m^2");
+        String str =a+"";
+        if (Pattern.matches(Regex.AREA,str)) {
+
+        }  else{
+            throw  new Exception("area have to more than 30 m^2");
         }
     }
 

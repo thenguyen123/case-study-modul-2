@@ -3,24 +3,25 @@ package views;
 import model.Room;
 import services.exception.*;
 import services.exception.Exception;
+import utils.Write.WriteFileRoom;
 
 import java.util.*;
 
 public class RoomView {
-
+public static final String FILEROOM="src/data/room.csv";
     Room room;
     public void addRoom() {
 
         Scanner scanner = new Scanner(System.in);
         String nameRoom="";
         int areaRoom;
-        double pricesRoom;
+        int  pricesRoom;
         int peopleRoom;
         do {
          try {
             System.out.println("enter name of Room");
             nameRoom = scanner.nextLine();
-            RegexName regexID = new RegexName();
+            ExceptionAndRegexName regexID = new ExceptionAndRegexName();
             regexID.regexId(nameRoom);
             break;
             }catch (Exception e){
@@ -41,7 +42,7 @@ public class RoomView {
        do {
            try{
                System.out.println("enter prices of Room");
-               pricesRoom = Double.parseDouble(scanner.nextLine());
+               pricesRoom = Integer.parseInt(scanner.nextLine());
                ExceptionPrices.prices(pricesRoom);
                break;
            }catch (Exception |NumberFormatException  e){

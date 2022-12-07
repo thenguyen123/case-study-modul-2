@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadCustomer {
-    public List<Customer> readCustomer(String PATH){
+    public static List<Customer> readCustomer(String PATH){
         List<Customer> list=new ArrayList<>();
         FileReader fileReader=null;
         BufferedReader bufferedReader=null;

@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class FuramaView {
     public static void disPlayMainMenu() {
         Scanner scanner = new Scanner(System.in);
-        int numberInput;
+        int numberInput = 0;
         do {
-
+            try {
             System.out.println("1.Employee Management");
             System.out.println("2.Customer Management");
             System.out.println("3.Facility Management");
@@ -15,7 +15,11 @@ public class FuramaView {
             System.out.println("5.Promotion Management");
             System.out.println("6.Exit");
             System.out.println("enter your option");
+
             numberInput = Integer.parseInt(scanner.nextLine());
+             }catch (NumberFormatException e){
+                 System.out.println(e.getMessage());
+             }
             switch (numberInput) {
                 case 1:
                     EmployeeManagementView employeeManagementController = new EmployeeManagementView();
@@ -37,6 +41,10 @@ public class FuramaView {
                     PromotionManagementView promotionManagementController = new PromotionManagementView();
                     promotionManagementController.promotionManagement();
                     break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("please enter option again");
             }
         } while (numberInput != 6);
     }

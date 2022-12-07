@@ -1,5 +1,7 @@
 package services;
 
+import model.Facility;
+
 import java.util.List;
 import java.util.Map;
 

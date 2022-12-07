@@ -1,7 +1,7 @@
 package views;
 
 import model.Customer;
-import services.exception.RegexDayOfBirth;
+import services.exception.ExceptionAndRegexDayOfBirth;
 import services.impl.CustomerServiceImpl;
 
 import java.util.List;
@@ -24,7 +24,9 @@ public class CustomerManagementView {
         switch (input) {
             case 1:
               List<Customer>list= customerService.disPlay();
-                System.out.println(list);
+              for(Customer customer: list) {
+                  System.out.println(customer.toString());
+              }
                 break;
             case 2:
                 System.out.println("enter id of Customer ");
@@ -48,7 +50,7 @@ public class CustomerManagementView {
                     try { System.out.println("enter day of birth of Customer");
 
                         dayOfBirth= scanner.nextLine();
-                        RegexDayOfBirth.dayOfBirth(dayOfBirth);
+                        ExceptionAndRegexDayOfBirth.dayOfBirth(dayOfBirth);
                         break;
                     }catch ( Exception e){
                         System.out.println(e.getMessage());
@@ -75,10 +77,10 @@ public class CustomerManagementView {
                 String addressCustomer1 = scanner.nextLine();
                 String dayOfBirth1;
                 do{
-                    try { System.out.println("enter day of birth of Customer");
-
+                    try {
+                        System.out.println("enter day of birth of Customer");
                         dayOfBirth1 = scanner.nextLine();
-                        RegexDayOfBirth.dayOfBirth(dayOfBirth1);
+                        ExceptionAndRegexDayOfBirth.dayOfBirth(dayOfBirth1);
                         break;
                     }catch ( Exception e){
                         System.out.println(e.getMessage());

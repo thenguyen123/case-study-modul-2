@@ -7,9 +7,9 @@ public class PromotionManagementView {
 
     int input;
     do{
-        System.out.println("Display list customers use service");
-        System.out.println("Display list customers get voucher");
-        System.out.println("Return main menu");
+        System.out.println("1.Display list customers use service");
+        System.out.println("2.Display list customers get voucher");
+        System.out.println("3.Return main menu");
         System.out.println("enter your option");
         Scanner scanner=new Scanner(System.in);
         input=Integer.parseInt(scanner.nextLine());

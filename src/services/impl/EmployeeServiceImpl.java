@@ -21,7 +21,7 @@ public static final String EMPLOYEE="D:\\codegym\\case_study\\src\\data\\employe
     public void addEmployee(Employee employee) {
         List<Employee> list=new ArrayList<>();
         list.add(employee);
-        WriteFileEmployee.writeFile(EMPLOYEE,list);
+        WriteFileEmployee.writeFile(EMPLOYEE,list,true);
     }
 
     @Override
@@ -39,7 +39,7 @@ public static final String EMPLOYEE="D:\\codegym\\case_study\\src\\data\\employe
                 e.setSalary(employee.getSalary());
                 break;
             }
-        }WriteFileEmployee.writeFile(EMPLOYEE,list);
+        }WriteFileEmployee.writeFile(EMPLOYEE,list,false);
 
 
         }
@@ -53,6 +53,6 @@ public static final String EMPLOYEE="D:\\codegym\\case_study\\src\\data\\employe
             if(idEmployee.equals(e.getId())){
                 list.remove(e);
         }
-        }WriteFileEmployee.writeFile(EMPLOYEE,list);
+        }WriteFileEmployee.writeFile(EMPLOYEE,list,false);
     }
 }

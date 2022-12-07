@@ -6,7 +6,7 @@ public abstract class Facility {
 
     private String name;
     private int area;
-    private  double prices;
+    private  int prices;
     private int people;
     private String rentType;
 
@@ -14,7 +14,7 @@ public abstract class Facility {
     public Facility() {
     }
 
-    public Facility(String name, int area, double prices, int people, String rentType) {
+    public Facility(String name, int area, int  prices, int people, String rentType) {
 this.name=name;
 this.area=area;
 this.prices=prices;
@@ -38,11 +38,11 @@ this.rentType=rentType;
         this.area = area;
     }
 
-    public double getPrices() {
+    public int  getPrices() {
         return prices;
     }
 
-    public void setPrices(double prices) {
+    public void setPrices(int  prices) {
         this.prices = prices;
     }
 
@@ -68,8 +68,8 @@ this.rentType=rentType;
                 ", area=" + area +
                 ", prices='" + prices + '\'' +
                 ", people=" + people +
-                ", rentType='" + rentType + '\'' +
-                '}';
+                ", rentType='" + rentType
+                ;
     }
 
     @Override
@@ -77,7 +77,7 @@ this.rentType=rentType;
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Facility facility = (Facility) o;
-        return area == facility.area && Double.compare(facility.prices, prices) == 0 && people == facility.people
+        return area == facility.area && prices==facility.area&& people == facility.people
                 && Objects.equals(name, facility.name) && Objects.equals(rentType, facility.rentType);
     }
 

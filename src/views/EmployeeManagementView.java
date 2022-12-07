@@ -1,7 +1,7 @@
 package views;
 
 import model.Employee;
-import services.exception.RegexDayOfBirth;
+import services.exception.ExceptionAndRegexDayOfBirth;
 import services.impl.EmployeeServiceImpl;
 
 import java.util.List;
@@ -24,7 +24,9 @@ do{
         switch (input) {
             case 1:
                 List<Employee> list=employeeService.disPlay();
-                System.out.println(list);
+                for (Employee employee:list) {
+                    System.out.println(employee.toString());
+                }
                 break;
             case 2:
 
@@ -49,7 +51,7 @@ do{
                     try {
                         System.out.println("enter day of birth of Employee");
                         dayOfBirth = scanner.nextLine();
-                        RegexDayOfBirth.dayOfBirth(dayOfBirth);
+                        ExceptionAndRegexDayOfBirth.dayOfBirth(dayOfBirth);
                         break;
                     }catch ( Exception e){
                         System.out.println(e.getMessage());
@@ -86,7 +88,7 @@ do{
                     try {
                         System.out.println("enter day of birth of Employee");
                         dayOfBirth1 = scanner.nextLine();
-                        RegexDayOfBirth.dayOfBirth(dayOfBirth1);
+                        ExceptionAndRegexDayOfBirth.dayOfBirth(dayOfBirth1);
                         break;
                     }catch ( Exception e){
                         System.out.println(e.getMessage());

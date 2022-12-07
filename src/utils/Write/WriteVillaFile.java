@@ -1,26 +1,23 @@
 package utils.Write;
 
-import model.Employee;
 import model.Room;
+import model.Villa;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
-public class WriteFileRoom {
-    public static void writeFile(String PATH, Room room) {
-   BufferedWriter bufferedWriter=null;
+public class WriteVillaFile {
+    public static void writeFile(String PATH, Villa villa) {
+        BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(PATH,true);
-
             bufferedWriter = new BufferedWriter(fileWriter);
 
-                bufferedWriter.write(room.csv());
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
-
+            bufferedWriter.write(villa.csv());
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
 
 
         } catch (Exception e) {

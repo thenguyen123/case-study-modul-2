@@ -1,9 +1,9 @@
 package views;
 
 import controllers.FacilityServiceController;
-import model.Facility;
-import services.impl.FacilityServiceImpl;
 
+import model.Room;
+import model.Villa;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -26,9 +26,14 @@ public class FacilityManagementView {
             input = Integer.parseInt(scanner.nextLine());
             switch (input) {
                 case 1:
-                    for (Map.Entry<Facility, Integer> entry : facilityServiceController.addFacility().entrySet()) {
-                        System.out.println(" service " + entry.getKey() + " times " + entry.getValue());
+
+                    for (Map.Entry<Room, Integer> entry : facilityServiceController.toStringRoom().entrySet()) {
+                        System.out.println(entry.getKey() + " use times " + entry.getValue());
                     }
+                    for (Map.Entry<Villa, Integer> entry : facilityServiceController.toStringVilla().entrySet()) {
+                        System.out.println(entry.getKey() + " use times " + entry.getValue());
+                    }
+
                     break;
                 case 2:
 
@@ -41,29 +46,24 @@ public class FacilityManagementView {
                         option = Integer.parseInt(scanner.nextLine());
                         switch (option) {
                             case 1:
-                                roomView.addRoom();
-                                boolean flag = true;
-                                for (Map.Entry<Facility, Integer> entry : facilityServiceController.addFacility().entrySet()) {
-                                    if (roomView.room().equals(entry.getKey())) {
-                                        flag = false;
+                                for (Map.Entry<Room, Integer> entry : facilityServiceController.toStringRoom().entrySet()) {
+                                    roomView.addRoom();
+                                    if (roomView.room().equals(entry.getValue())) {
+                                        System.out.println("the room  already in the list ");
+                                    } else {
+                                        facilityServiceController.addRoom(roomView.room());
                                     }
                                 }
-                                if (flag) {
-                                    facilityServiceController.addFacility().put(roomView.room(), 2);
-                                } else System.out.println(" the room already exists ");
                                 break;
                             case 2:
-                                villaView.addVilla();
-                                boolean flagvilla = true;
-                                for (Map.Entry<Facility, Integer> entry :
-                                        facilityServiceController.addFacility().entrySet()) {
+                                for (Map.Entry<Villa, Integer> entry : facilityServiceController.toStringVilla().entrySet()) {
+                                    villaView.addVilla();
                                     if (villaView.villa().equals(entry.getKey())) {
-                                        flagvilla = false;
+                                        System.out.println("the room  already in the list ");
+                                    } else {
+                                        facilityServiceController.addVilla(villaView.villa());
                                     }
                                 }
-                                if (flagvilla) {
-                                    facilityServiceController.addFacility().put(villaView.villa(), 6);
-                                } else System.out.println(" the villa already exists ");
 
                                 break;
                         }
@@ -71,11 +71,17 @@ public class FacilityManagementView {
 
                     break;
                 case 3:
-                    for (Map.Entry<Facility, Integer> entry : facilityServiceController.addFacility().entrySet()) {
+                    for (Map.Entry<Room, Integer> entry : facilityServiceController.toStringRoom().entrySet()) {
                         if (entry.getValue() > 5) {
                             System.out.println(" service " + entry.getKey() + " times " + entry.getValue());
                         }
                     }
+                    for (Map.Entry<Villa, Integer> entry : facilityServiceController.toStringVilla().entrySet()) {
+                        if (entry.getValue() > 5) {
+                            System.out.println(" service " + entry.getKey() + " times " + entry.getValue());
+                        }
+                    }
+
                     break;
                 case 4:
                     FuramaView.disPlayMainMenu();
