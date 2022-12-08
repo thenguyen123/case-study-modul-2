@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class WriteFileCustomer {
-    public static void writeFile(String PATH, List<Customer> list,boolean flag) {
+    public static void writeFile(String PATH, List<Customer> list) {
         BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(PATH,flag);
+            fileWriter = new FileWriter(PATH);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Customer customer : list) {
                 bufferedWriter.write(customer.csv());

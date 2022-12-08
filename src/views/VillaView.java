@@ -117,7 +117,7 @@ public  static final String FILEVILLA="src/data/villa.csv";
         WriteVillaFile.writeFile(FILEVILLA,villa);
     }
 
-    public Villa villa() {
+    public Villa getVilla() {
         return villa;
     }
 }

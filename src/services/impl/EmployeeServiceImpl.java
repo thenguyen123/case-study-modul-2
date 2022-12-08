@@ -1,6 +1,7 @@
 package services.impl;
 
 import model.Employee;
+import services.exception.NotFoundException;
 import utils.Read.ReadFileEmployee;
 import utils.Write.WriteFileEmployee;
 
@@ -19,14 +20,22 @@ public static final String EMPLOYEE="D:\\codegym\\case_study\\src\\data\\employe
 //    String email, String type, String address, double salary) {
     @Override
     public void addEmployee(Employee employee) {
-        List<Employee> list=new ArrayList<>();
-        list.add(employee);
-        WriteFileEmployee.writeFile(EMPLOYEE,list,true);
+        List<Employee> list=ReadFileEmployee.readFile(EMPLOYEE);
+        for (int i = 0; i < list.size(); i++) {
+            Employee e = list.get(i);
+            if (employee.getId().equals(e.getId())) {
+                System.out.println("id already in list Employee");
+                return;
+            }
+        }list.add(employee);
+        WriteFileEmployee.writeFile(EMPLOYEE,list);
+        
     }
 
     @Override
-    public void editEmployee(Employee employee) {
+    public void editEmployee(Employee employee) throws NotFoundException {
         List<Employee> list=ReadFileEmployee.readFile(EMPLOYEE);
+        boolean flag=true;
         for (int i = 0; i < list.size(); i++) {
              Employee e=list.get(i);
             if (employee.getId().equals(e.getId())) {
@@ -37,22 +46,32 @@ public static final String EMPLOYEE="D:\\codegym\\case_study\\src\\data\\employe
                 e.setType(employee.getType());
                 e.setAddress(employee.getAddress());
                 e.setSalary(employee.getSalary());
+                WriteFileEmployee.writeFile(EMPLOYEE,list);
+                flag=false;
                 break;
             }
-        }WriteFileEmployee.writeFile(EMPLOYEE,list,false);
-
+        }if(flag){
+            throw new NotFoundException();
+        }
 
         }
 
 
     @Override
-    public void deleteEmployee(String idEmployee) {
+    public void deleteEmployee(String idEmployee) throws NotFoundException {
         List<Employee> list=ReadFileEmployee.readFile(EMPLOYEE);
+        boolean flag= true;
         for (int i = 0; i < list.size(); i++) {
             Employee e=list.get(i);
             if(idEmployee.equals(e.getId())){
                 list.remove(e);
+                WriteFileEmployee.writeFile(EMPLOYEE,list);
+                flag=false;
+                break;
+
         }
-        }WriteFileEmployee.writeFile(EMPLOYEE,list,false);
+        }if(flag){
+            throw new NotFoundException();
+        }
     }
 }

@@ -6,7 +6,7 @@ import services.impl.BookingServiceImpl;
 import java.util.List;
 
 public class BookingController {
-BookingServiceImpl bookingService=new BookingServiceImpl();
+private final BookingServiceImpl bookingService=new BookingServiceImpl();
 
     public List<Booking> disPlay() {
         return bookingService.disPlay();

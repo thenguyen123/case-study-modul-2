@@ -6,7 +6,7 @@ import services.impl.CustomerServiceImpl;
 import java.util.List;
 
 public class CustomerController {
-    CustomerServiceImpl customerService = new CustomerServiceImpl();
+ private  final  CustomerServiceImpl customerService = new CustomerServiceImpl();
 
     public List<Customer> disPlay() {
         return customerService.disPlay();

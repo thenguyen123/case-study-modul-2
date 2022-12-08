@@ -29,16 +29,25 @@ public  static final String FILECUSTOMER="src/data/customer.csv";
                 c.setEmail(customer.getEmail());
                 c.setSex(customer.getSex());
                 c.setType(customer.getType());
-
+                WriteFileCustomer.writeFile(FILECUSTOMER,list);
                 break;
             }
-        }WriteFileCustomer.writeFile(FILECUSTOMER,list,false);
+        }
     }
 
     @Override
     public void add(Customer customer) {
-        List<Customer>list=new ArrayList<>();
-        list.add(customer);
-        WriteFileCustomer.writeFile(FILECUSTOMER,list,true);
+
+        List<Customer>list=ReadCustomer.readCustomer(FILECUSTOMER);
+        for (int i = 0; i < list.size() ; i++) {
+            Customer c = list.get(i);
+            if (c.getId().equals(customer.getId())){
+                System.out.println("id already. you can not add");
+                return;
+            }
+        } list.add(customer);
+        WriteFileCustomer.writeFile(FILECUSTOMER,list);
+
+
     }
 }

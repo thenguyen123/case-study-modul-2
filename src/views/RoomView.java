@@ -68,7 +68,7 @@ public static final String FILEROOM="src/data/room.csv";
         String serviceRoom = scanner.nextLine();
         room = new Room(nameRoom, areaRoom, pricesRoom, peopleRoom, rentType, serviceRoom);
 
-    }public Room room(){
+    }public Room getRoom1(){
         return room;
     }
 

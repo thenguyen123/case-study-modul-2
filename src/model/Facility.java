@@ -11,10 +11,10 @@ public abstract class Facility {
     private String rentType;
 
 
-    public Facility() {
+     Facility() {
     }
 
-    public Facility(String name, int area, int  prices, int people, String rentType) {
+   Facility(String name, int area, int  prices, int people, String rentType) {
 this.name=name;
 this.area=area;
 this.prices=prices;

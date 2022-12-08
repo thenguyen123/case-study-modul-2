@@ -29,7 +29,7 @@ public class Room extends Facility {
     @Override
     public String toString() {
         return "Room{" +super.toString()+
-                "serviceFree='" + serviceFree + '\'' +
+                " serviceFree='" + serviceFree + '\'' +
                 '}';
     }public String csv(){
         return super.getName()+","+super.getArea()+","+super.getPrices()+","+super.getPeople()+","+

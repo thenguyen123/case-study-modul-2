@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class CustomerManagementView {
 
-
+  private final   CustomerServiceImpl customerService=new CustomerServiceImpl();
     public  void customerManagement() {
-        CustomerServiceImpl customerService=new CustomerServiceImpl();
+
         int input=0;
         do{
         System.out.println("1. Display list customers");
@@ -38,6 +38,7 @@ public class CustomerManagementView {
             case 2:
                 System.out.println("enter id of Customer ");
                 String idCustomer= scanner.nextLine();
+
                 System.out.println(" enter name of Customer");
                 String nameCustomer =RegexController.result(Regex.Name);
                 System.out.println("enter sex of Customer");

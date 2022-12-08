@@ -3,6 +3,7 @@ package views;
 import controllers.RegexController;
 import model.Employee;
 import services.exception.ExceptionAndRegexDayOfBirth;
+import services.exception.NotFoundException;
 import services.exception.Regex;
 import services.impl.EmployeeServiceImpl;
 
@@ -10,8 +11,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeManagementView {
+    private final  EmployeeServiceImpl employeeService=new EmployeeServiceImpl();
     public void employeeManagement() {
-        EmployeeServiceImpl employeeService=new EmployeeServiceImpl();
+
         Scanner scanner=new Scanner(System.in);
         int input=0;
 do{
@@ -30,8 +32,8 @@ do{
     }
         switch (input) {
             case 1:
-                List<Employee> list=employeeService.disPlay();
-                for (Employee employee:list) {
+                List<Employee> list = employeeService.disPlay();
+                for (Employee employee : list) {
                     System.out.println(employee.toString());
                 }
                 break;
@@ -39,6 +41,7 @@ do{
 
                 System.out.println("enter id of Employee ");
                 String idEmployee = scanner.nextLine();
+
                 System.out.println(" enter name of Employee");
                 String nameEmployee = RegexController.result(Regex.Name);
                 System.out.println("enter sex of Employee");
@@ -54,16 +57,16 @@ do{
                 System.out.println("enter salary of Employee");
                 int salaryEmployee = Integer.parseInt(RegexController.result(Regex.People));
                 String dayOfBirth;
-                do{
+                do {
                     try {
                         System.out.println("enter day of birth of Employee");
                         dayOfBirth = scanner.nextLine();
                         ExceptionAndRegexDayOfBirth.dayOfBirth(dayOfBirth);
                         break;
-                    }catch ( Exception e){
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-                }while (true);
+                } while (true);
                 Employee employee = new Employee(idEmployee, nameEmployee, dayOfBirth, sexEmployee, cmndEmployee, email,
                         typeEmployee, addressEmployee, salaryEmployee);
                 employeeService.addEmployee(employee);
@@ -71,11 +74,16 @@ do{
             case 3:
                 System.out.println("enter id of Employee ");
                 String idEmployee1 = scanner.nextLine();
-                employeeService.deleteEmployee(idEmployee1);
+                try {
+                    employeeService.deleteEmployee(idEmployee1);
+                } catch (NotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case 4:
+                String idEmployee2;
                 System.out.println("enter id of Employee ");
-                String idEmployee2= scanner.nextLine();
+                idEmployee2 = scanner.nextLine();
                 System.out.println(" enter name of Employee");
                 String nameEmployee1 = RegexController.result(Regex.Name);
                 System.out.println("enter sex of Employee");
@@ -104,7 +112,11 @@ do{
 
                 Employee employee1 = new Employee(idEmployee2, nameEmployee1,dayOfBirth1, sexEmployee1, cmndEmployee1, email1,
                         typeEmployee1, addressEmployee1, salaryEmployee1);
-                employeeService.editEmployee(employee1);
+                try {
+                    employeeService.editEmployee(employee1);
+                } catch (NotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case 5:
                 FuramaView.disPlayMainMenu();

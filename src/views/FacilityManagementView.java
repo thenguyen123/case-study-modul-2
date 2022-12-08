@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityManagementView {
-    FacilityServiceController facilityServiceController = new FacilityServiceController();
-    RoomView roomView = new RoomView();
-    VillaView villaView = new VillaView();
+   private final FacilityServiceController facilityServiceController = new FacilityServiceController();
+   private final RoomView roomView = new RoomView();
+   private final VillaView villaView = new VillaView();
 
     public void facilityManagement() {
         int input=0;
@@ -59,20 +59,20 @@ public class FacilityManagementView {
                             case 1:
                                 for (Map.Entry<Room, Integer> entry : facilityServiceController.toStringRoom().entrySet()) {
                                     roomView.addRoom();
-                                    if (roomView.room().equals(entry.getValue())) {
+                                    if (roomView.getRoom1().equals(entry.getValue())) {
                                         System.out.println("the room  already in the list ");
                                     } else {
-                                        facilityServiceController.addRoom(roomView.room());
+                                        facilityServiceController.addRoom(roomView.getRoom1());
                                     }
                                 }
                                 break;
                             case 2:
                                 for (Map.Entry<Villa, Integer> entry : facilityServiceController.toStringVilla().entrySet()) {
                                     villaView.addVilla();
-                                    if (villaView.villa().equals(entry.getKey())) {
+                                    if (villaView.getVilla().equals(entry.getKey())) {
                                         System.out.println("the room  already in the list ");
                                     } else {
-                                        facilityServiceController.addVilla(villaView.villa());
+                                        facilityServiceController.addVilla(villaView.getVilla());
                                     }
                                 }
 
@@ -82,11 +82,13 @@ public class FacilityManagementView {
 
                     break;
                 case 3:
+                    System.out.println("Room have to facility management");
                     for (Map.Entry<Room, Integer> entry : facilityServiceController.toStringRoom().entrySet()) {
                         if (entry.getValue() > 5) {
                             System.out.println(" service " + entry.getKey() + " times " + entry.getValue());
                         }
                     }
+                    System.out.println("Villa have to facility management");
                     for (Map.Entry<Villa, Integer> entry : facilityServiceController.toStringVilla().entrySet()) {
                         if (entry.getValue() > 5) {
                             System.out.println(" service " + entry.getKey() + " times " + entry.getValue());

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FacilityServiceController {
-    FacilityServiceImpl facilityService = new FacilityServiceImpl();
+  private final   FacilityServiceImpl facilityService = new FacilityServiceImpl();
 
     public Map<Facility, Integer> addFacility() {
         return facilityService.addFacility();

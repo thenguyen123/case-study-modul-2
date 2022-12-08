@@ -12,7 +12,7 @@ public abstract class Person {
     private String address;
 
 
-    public Person(String id, String name,String dayOfBirth, String sex, String CMND, String email, String type,
+    Person(String id, String name,String dayOfBirth, String sex, String CMND, String email, String type,
                   String address) {
         this.dayOfBirth=dayOfBirth;
         this.id = id;
@@ -24,7 +24,7 @@ public abstract class Person {
         this.address = address;
     }
 
-    public Person() {
+    Person() {
     }
 
     public String getDayOfBirth() {
@@ -93,7 +93,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", dayOfBirth='" + dayOfBirth + '\'' +
@@ -101,8 +101,8 @@ public abstract class Person {
                 ", CMND='" + CMND + '\'' +
                 ", email='" + email + '\'' +
                 ", type='" + type + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+                ", address='" + address
+                ;
     }
 }
 

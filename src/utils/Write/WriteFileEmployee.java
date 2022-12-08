@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class WriteFileEmployee {
-    public static void writeFile(String PATH, List<Employee> list,boolean flag) {
+    public static void writeFile(String PATH, List<Employee> list) {
         BufferedWriter bufferedWriter = null;
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(PATH,flag);
+            fileWriter = new FileWriter(PATH);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (Employee employee : list) {
                 bufferedWriter.write(employee.csv());
